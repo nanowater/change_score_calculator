@@ -27,18 +27,18 @@
         var v_tam2 = Number(document.getElementById("tam2").value);
         var res = 0;
 
-        if (!v_kor) {
-          alert("국어 표준점수를 입력해주세요!");
-        } else if (!v_math) {
-          alert("수학 표준점수를 입력해주세요!");
-        } else if (!v_eng) {
-          alert("영어 등급을 입력해주세요!");
-        } else if (!v_hist) {
-          alert("역사 등급을 입력해주세요!");
-        } else if (!v_tam1) {
-          alert("탐구1 표준 점수를 입력해주세요!");
-        } else if (!v_tam2) {
-          alert("탐구2 표준 점수를 입력해주세요!");
+        if (!v_kor || !(0 <= v_kor && v_kor <= 200)) {
+          alert("국어 표준점수를 확인해주세요!");
+        } else if (!v_math || !(0 <= v_math && v_math <= 200)) {
+          alert("수학 표준점수를 확인해주세요!");
+        } else if (!v_eng || !(1 <= v_eng && v_eng <= 9)) {
+          alert("영어 등급을 확인해주세요!");
+        } else if (!v_hist || !(1 <= v_hist && v_hist <= 9)) {
+          alert("역사 등급을 확인해주세요!");
+        } else if (!v_tam1 || !(0 <= v_tam1 && v_tam1 <= 100)) {
+          alert("탐구1 표준 점수를 확인해주세요!");
+        } else if (!v_tam2 || !(0 <= v_tam2 && v_tam2 <= 100)) {
+          alert("탐구2 표준 점수를 확인해주세요!");
         } else {
           //점수 계산
           res += 200 - 10 * (v_eng - 1);
@@ -75,7 +75,6 @@
 
   <body>
     <h1>부산대 환산점수 계산기</h1>
-
     <hr />
     <tr>
       <td>계열 :</td>
@@ -121,5 +120,7 @@
       <br /><br />
       <input type="reset" value="초기화" onclick="reset()" />
     </fieldset>
+    <h4>!주의!</h4>
+    <h5>~대충 주의에 쓸만한 내용~</h5>
   </body>
 </html>
