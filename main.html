@@ -1,126 +1,69 @@
-<!--
-  major_kor : ë¬¸ê³¼
-  major_sci : ì´ê³¼
-  kor : êµ­ì–´
-  math : ìˆ˜í•™
-  eng : ì˜ì–´
-  hist : ì—­ì‚¬
-  tam1 : íƒêµ¬1
-  tam2 : íƒêµ¬2
-  -->
-
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>ë¶€ì‚°ëŒ€ í™˜ì‚°ì ìˆ˜ ê³„ì‚°</title>
-    <script>
-      function cac() {
-        //ì ìˆ˜ ë¶ˆëŸ¬ì˜¤ê¸°
-        document.getElementById("res").value = null;
-        var v_major = document.querySelector('input[name="major"]:checked').value;
-        var v_kor = Number(document.getElementById("kor").value);
-        var v_math = Number(document.getElementById("math").value);
-        var v_eng = Number(document.getElementById("eng").value);
-        var v_hist = Number(document.getElementById("hist").value);
-        var v_tam1 = Number(document.getElementById("tam1").value);
-        var v_tam2 = Number(document.getElementById("tam2").value);
-        var res = 0;
-
-        if (!v_kor || !(0 <= v_kor && v_kor <= 200)) {
-          alert("êµ­ì–´ í‘œì¤€ì ìˆ˜ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!");
-        } else if (!v_math || !(0 <= v_math && v_math <= 200)) {
-          alert("ìˆ˜í•™ í‘œì¤€ì ìˆ˜ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!");
-        } else if (!v_eng || !(1 <= v_eng && v_eng <= 9)) {
-          alert("ì˜ì–´ ë“±ê¸‰ì„ í™•ì¸í•´ì£¼ì„¸ìš”!");
-        } else if (!v_hist || !(1 <= v_hist && v_hist <= 9)) {
-          alert("ì—­ì‚¬ ë“±ê¸‰ì„ í™•ì¸í•´ì£¼ì„¸ìš”!");
-        } else if (!v_tam1 || !(0 <= v_tam1 && v_tam1 <= 100)) {
-          alert("íƒêµ¬1 í‘œì¤€ ì ìˆ˜ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!");
-        } else if (!v_tam2 || !(0 <= v_tam2 && v_tam2 <= 100)) {
-          alert("íƒêµ¬2 í‘œì¤€ ì ìˆ˜ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!");
-        } else {
-          //ì ìˆ˜ ê³„ì‚°
-          res += 200 - 10 * (v_eng - 1);
-          if (v_hist <= 4) res += 10;
-          else res += 10 - (v_hist - 4) * 0.2;
-          if (v_major == "m_kor") {
-            res += v_kor * 1.5;
-            res += v_math * 1.25;
-            res += v_tam1 * 1.25;
-            res += v_tam2 * 1.25;
-          } else {
-            res += v_kor * 1;
-            res += v_math * 1.5;
-            res += v_tam1 * 1.5;
-            res += v_tam2 * 1.5;
-          }
-          res = res.toFixed(2);
-          document.getElementById("res").value = res;
-        }
-      }
-      function reset() {
-        document.getElementById("res").value = null;
-        var major_radio = document.querySelector("input[type=radio][name=major]:checked");
-        major_radio.checked = false;
-        document.getElementById("kor").value = null;
-        document.getElementById("math").value = null;
-        document.getElementById("eng").value = null;
-        document.getElementById("hist").value = null;
-        document.getElementById("tam1").value = null;
-        document.getElementById("tam2").value = null;
-      }
-    </script>
+    <meta charset="euc-kr" />
+    <title>ºÎ»ê´ë È¯»êÁ¡¼ö °è»ê</title>
+    <script src="calculate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="csv_read.js"></script>
   </head>
 
   <body>
-    <h1>ë¶€ì‚°ëŒ€ í™˜ì‚°ì ìˆ˜ ê³„ì‚°ê¸°</h1>
+    <h1>ºÎ»ê´ë È¯»êÁ¡¼ö °è»ê±â</h1>
     <hr />
     <tr>
-      <td>ê³„ì—´ :</td>
+      <td>°è¿­ :</td>
       <td>
-        <input type="radio" name="major" value="m_kor" checked="checked" /> ë¬¸ê³¼
-        <input type="radio" name="major" value="m_sci" /> ì´ê³¼
+        <input type="radio" name="major" value="m_kor" checked="checked" /> ¹®°ú
+        <input type="radio" name="major" value="m_sci" /> ÀÌ°ú
       </td>
     </tr>
     <hr />
 
     <fieldset>
-      <legend>ì ìˆ˜ ì…ë ¥</legend>
+      <legend>Á¡¼ö ÀÔ·Â</legend>
       <table>
         <tr>
-          <td>êµ­ì–´ í‘œì¤€ì ìˆ˜ :</td>
+          <td>±¹¾î Ç¥ÁØÁ¡¼ö :</td>
           <td><input id="kor" type="text" /></td>
         </tr>
         <tr>
-          <td>ìˆ˜í•™ í‘œì¤€ì ìˆ˜ :</td>
+          <td>¼öÇĞ Ç¥ÁØÁ¡¼ö :</td>
           <td><input id="math" type="text" /></td>
         </tr>
         <tr>
-          <td>ì˜ì–´ ë“±ê¸‰:</td>
+          <td>¿µ¾î µî±Ş:</td>
           <td><input id="eng" type="text" /></td>
         </tr>
         <tr>
-          <td>í•œêµ­ì‚¬ ë“±ê¸‰ :</td>
+          <td>ÇÑ±¹»ç µî±Ş :</td>
           <td><input id="hist" type="text" /></td>
         </tr>
         <tr>
-          <td>íƒêµ¬1 í‘œì¤€ì ìˆ˜ :</td>
+          <td>Å½±¸1 Ç¥ÁØÁ¡¼ö :</td>
           <td><input id="tam1" type="text" /></td>
         </tr>
         <tr>
-          <td>íƒêµ¬2 í‘œì¤€ì ìˆ˜ :</td>
+          <td>Å½±¸2 Ç¥ÁØÁ¡¼ö :</td>
           <td><input id="tam2" type="text" /></td>
         </tr>
       </table>
       <br />
-      <input type="submit" value="ì ìˆ˜ ê³„ì‚°" onclick="cac()" /><br /><br />
-      í™˜ì‚° ì ìˆ˜ :
-      <input type="text" id="res" />
+      <input type="submit" value="Á¡¼ö °è»ê" onclick="cac()" /><br /><br />
+      È¯»ê Á¡¼ö :
+      <input type="text" id="change_score_res" />
       <br /><br />
-      <input type="reset" value="ì´ˆê¸°í™”" onclick="reset()" />
+      <input type="reset" value="ÃÊ±âÈ­" onclick="reset()" />
     </fieldset>
-    <h4>!ì£¼ì˜!</h4>
-    <h5>~ëŒ€ì¶© ì£¼ì˜ì— ì“¸ë§Œí•œ ë‚´ìš©~</h5>
+    <br />
+    <fieldset>
+      °ú ¼±ÅÃ<br />
+      <select id="major_select" onchange="show_res()"></select>
+      <input type="text" id="major_aver_score" />
+      <input type="text" id="answer" />
+    </fieldset>
+
+    <h4>!ÁÖÀÇ!</h4>
+    <h5>~´ëÃæ ÁÖÀÇ¿¡ ¾µ¸¸ÇÑ ³»¿ë~</h5>
   </body>
 </html>
