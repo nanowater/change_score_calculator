@@ -17,7 +17,7 @@
     <script>
       function cac() {
         //점수 불러오기
-        document.getElementById("res").value = 0;
+        document.getElementById("res").value = null;
         var v_major = document.querySelector('input[name="major"]:checked').value;
         var v_kor = Number(document.getElementById("kor").value);
         var v_math = Number(document.getElementById("math").value);
@@ -26,22 +26,38 @@
         var v_tam1 = Number(document.getElementById("tam1").value);
         var v_tam2 = Number(document.getElementById("tam2").value);
         var res = 0;
-        //점수 계산
-        res += 200 - 10 * (v_eng - 1);
-        if (v_hist <= 4) res += 10;
-        else res += 10 - (v_hist - 4) * 0.2;
-        if (v_major == "m_kor") {
-          res += v_kor * 1.5;
-          res += v_math * 1.25;
-          res += v_tam1 * 1.25;
-          res += v_tam2 * 1.25;
+
+        if (!v_kor) {
+          alert("국어 표준점수를 입력해주세요!");
+        } else if (!v_math) {
+          alert("수학 표준점수를 입력해주세요!");
+        } else if (!v_eng) {
+          alert("영어 등급을 입력해주세요!");
+        } else if (!v_hist) {
+          alert("역사 등급을 입력해주세요!");
+        } else if (!v_tam1) {
+          alert("탐구1 표준 점수를 입력해주세요!");
+        } else if (!v_tam2) {
+          alert("탐구2 표준 점수를 입력해주세요!");
         } else {
-          res += v_kor * 1;
-          res += v_math * 1.5;
-          res += v_tam1 * 1.5;
-          res += v_tam2 * 1.5;
+          //점수 계산
+          res += 200 - 10 * (v_eng - 1);
+          if (v_hist <= 4) res += 10;
+          else res += 10 - (v_hist - 4) * 0.2;
+          if (v_major == "m_kor") {
+            res += v_kor * 1.5;
+            res += v_math * 1.25;
+            res += v_tam1 * 1.25;
+            res += v_tam2 * 1.25;
+          } else {
+            res += v_kor * 1;
+            res += v_math * 1.5;
+            res += v_tam1 * 1.5;
+            res += v_tam2 * 1.5;
+          }
+          res = res.toFixed(2);
+          document.getElementById("res").value = res;
         }
-        document.getElementById("res").value = res;
       }
       function reset() {
         document.getElementById("res").value = null;
@@ -64,11 +80,12 @@
     <tr>
       <td>계열 :</td>
       <td>
-        <input type="radio" name="major" value="m_kor" /> 문과
+        <input type="radio" name="major" value="m_kor" checked="checked" /> 문과
         <input type="radio" name="major" value="m_sci" /> 이과
       </td>
     </tr>
     <hr />
+
     <fieldset>
       <legend>점수 입력</legend>
       <table>
