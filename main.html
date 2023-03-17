@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="euc-kr" />
-    <title>ºÎ»ê´ë È¯»êÁ¡¼ö °è»ê</title>
+    <meta charset="utf-8" />
+    <title>ë¶€ì‚°ëŒ€ í™˜ì‚°ì ìˆ˜ ê³„ì‚°</title>
     <script src="calculate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="csv_read.js"></script>
   </head>
 
   <body>
-    <h1>ºÎ»ê´ë È¯»êÁ¡¼ö °è»ê±â</h1>
+    <h1>ë¶€ì‚°ëŒ€ í™˜ì‚°ì ìˆ˜ ê³„ì‚°ê¸°</h1>
     <hr />
     <tr>
-      <td>°è¿­ :</td>
+      <td>ê³„ì—´ :</td>
       <td>
-        <input type="radio" name="major" value="m_kor" checked="checked" /> ¹®°ú
-        <input type="radio" name="major" value="m_sci" /> ÀÌ°ú
+        <input type="radio" name="major" value="m_kor" checked="checked" /> ë¬¸ê³¼
+        <input type="radio" name="major" value="m_sci" /> ì´ê³¼
       </td>
     </tr>
     <hr />
 
     <fieldset>
-      <legend>Á¡¼ö ÀÔ·Â</legend>
+      <legend>ì ìˆ˜ ìž…ë ¥</legend>
       <table>
         <tr>
-          <td>±¹¾î Ç¥ÁØÁ¡¼ö :</td>
+          <td>êµ­ì–´ í‘œì¤€ì ìˆ˜ :</td>
           <td><input id="kor" type="text" /></td>
         </tr>
         <tr>
-          <td>¼öÇÐ Ç¥ÁØÁ¡¼ö :</td>
+          <td>ìˆ˜í•™ í‘œì¤€ì ìˆ˜ :</td>
           <td><input id="math" type="text" /></td>
         </tr>
         <tr>
-          <td>¿µ¾î µî±Þ:</td>
+          <td>ì˜ì–´ ë“±ê¸‰:</td>
           <td><input id="eng" type="text" /></td>
         </tr>
         <tr>
-          <td>ÇÑ±¹»ç µî±Þ :</td>
+          <td>í•œêµ­ì‚¬ ë“±ê¸‰ :</td>
           <td><input id="hist" type="text" /></td>
         </tr>
         <tr>
-          <td>Å½±¸1 Ç¥ÁØÁ¡¼ö :</td>
+          <td>íƒêµ¬1 í‘œì¤€ì ìˆ˜ :</td>
           <td><input id="tam1" type="text" /></td>
         </tr>
         <tr>
-          <td>Å½±¸2 Ç¥ÁØÁ¡¼ö :</td>
+          <td>íƒêµ¬2 í‘œì¤€ì ìˆ˜ :</td>
           <td><input id="tam2" type="text" /></td>
         </tr>
       </table>
       <br />
-      <input type="submit" value="Á¡¼ö °è»ê" onclick="cac()" /><br /><br />
-      È¯»ê Á¡¼ö :
+      <input type="submit" value="ì ìˆ˜ ê³„ì‚°" onclick="cac()" /><br /><br />
+      í™˜ì‚° ì ìˆ˜ :
       <input type="text" id="change_score_res" />
       <br /><br />
-      <input type="reset" value="ÃÊ±âÈ­" onclick="reset()" />
+      <input type="reset" value="ì´ˆê¸°í™”" onclick="reset()" />
     </fieldset>
     <br />
     <fieldset>
-      °ú ¼±ÅÃ<br />
+      ê³¼ ì„ íƒ<br />
       <select id="major_select" onchange="show_res()"></select>
       <input type="text" id="major_aver_score" />
       <input type="text" id="answer" />
     </fieldset>
 
-    <h4>!ÁÖÀÇ!</h4>
-    <h5>~´ëÃæ ÁÖÀÇ¿¡ ¾µ¸¸ÇÑ ³»¿ë~</h5>
+    <h4>!ì£¼ì˜!</h4>
+    <h5>~ëŒ€ì¶© ì£¼ì˜ì— ì“¸ë§Œí•œ ë‚´ìš©~</h5>
   </body>
 </html>
