@@ -1,0 +1,108 @@
+<!--
+  major_kor : 문과
+  major_sci : 이과
+  kor : 국어
+  math : 수학
+  eng : 영어
+  hist : 역사
+  tam1 : 탐구1
+  tam2 : 탐구2
+  -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>부산대 환산점수 계산</title>
+    <script>
+      function cac() {
+        //점수 불러오기
+        document.getElementById("res").value = 0;
+        var v_major = document.querySelector('input[name="major"]:checked').value;
+        var v_kor = Number(document.getElementById("kor").value);
+        var v_math = Number(document.getElementById("math").value);
+        var v_eng = Number(document.getElementById("eng").value);
+        var v_hist = Number(document.getElementById("hist").value);
+        var v_tam1 = Number(document.getElementById("tam1").value);
+        var v_tam2 = Number(document.getElementById("tam2").value);
+        var res = 0;
+        //점수 계산
+        res += 200 - 10 * (v_eng - 1);
+        if (v_hist <= 4) res += 10;
+        else res += 10 - (v_hist - 4) * 0.2;
+        if (v_major == "m_kor") {
+          res += v_kor * 1.5;
+          res += v_math * 1.25;
+          res += v_tam1 * 1.25;
+          res += v_tam2 * 1.25;
+        } else {
+          res += v_kor * 1;
+          res += v_math * 1.5;
+          res += v_tam1 * 1.5;
+          res += v_tam2 * 1.5;
+        }
+        document.getElementById("res").value = res;
+      }
+      function reset() {
+        document.getElementById("res").value = null;
+        var major_radio = document.querySelector("input[type=radio][name=major]:checked");
+        major_radio.checked = false;
+        document.getElementById("kor").value = null;
+        document.getElementById("math").value = null;
+        document.getElementById("eng").value = null;
+        document.getElementById("hist").value = null;
+        document.getElementById("tam1").value = null;
+        document.getElementById("tam2").value = null;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>부산대 환산점수 계산기</h1>
+
+    <hr />
+    <tr>
+      <td>계열 :</td>
+      <td>
+        <input type="radio" name="major" value="m_kor" /> 문과
+        <input type="radio" name="major" value="m_sci" /> 이과
+      </td>
+    </tr>
+    <hr />
+    <fieldset>
+      <legend>점수 입력</legend>
+      <table>
+        <tr>
+          <td>국어 표준점수 :</td>
+          <td><input id="kor" type="text" /></td>
+        </tr>
+        <tr>
+          <td>수학 표준점수 :</td>
+          <td><input id="math" type="text" /></td>
+        </tr>
+        <tr>
+          <td>영어 등급:</td>
+          <td><input id="eng" type="text" /></td>
+        </tr>
+        <tr>
+          <td>한국사 등급 :</td>
+          <td><input id="hist" type="text" /></td>
+        </tr>
+        <tr>
+          <td>탐구1 표준점수 :</td>
+          <td><input id="tam1" type="text" /></td>
+        </tr>
+        <tr>
+          <td>탐구2 표준점수 :</td>
+          <td><input id="tam2" type="text" /></td>
+        </tr>
+      </table>
+      <br />
+      <input type="submit" value="점수 계산" onclick="cac()" /><br /><br />
+      환산 점수 :
+      <input type="text" id="res" />
+      <br /><br />
+      <input type="reset" value="초기화" onclick="reset()" />
+    </fieldset>
+  </body>
+</html>
