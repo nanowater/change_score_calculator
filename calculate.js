@@ -44,7 +44,7 @@ function cac() {
 }
 
 function reset() {
-  document.getElementById("change_score_res").value = null;
+  document.getElementById("change_score_res").value = "";
   var major_radio = document.querySelector("input[type=radio][name=major]:checked");
   major_radio.checked = false;
   document.getElementById("kor").value = null;
@@ -53,22 +53,29 @@ function reset() {
   document.getElementById("hist").value = null;
   document.getElementById("tam1").value = null;
   document.getElementById("tam2").value = null;
+  document.getElementById("major_aver_score").value = null;
+  document.getElementById("answer").value = null;
 }
 
 function show_res() {
-  document.getElementById("answer").value = null;
-  fetch("Busan_Univ.csv")
-    .then((response) => response.text())
-    .then((data) => {
-      const parsedData = Papa.parse(data).data;
-      const select = document.getElementById("major_select");
-      const selectedIndex = select.selectedIndex;
-      document.getElementById("major_aver_score").value = parsedData[selectedIndex + 1][7];
-      if (
-        document.getElementById("change_score_res").value >
-        document.getElementById("major_aver_score").value
-      ) {
-        document.getElementById("answer").value = "평균이상";
-      } else document.getElementById("answer").value = "평균이하";
-    });
+  if (document.getElementById("change_score_res").value == "") {
+    alert("환산 점수를 계산해주세요!");
+  } else {
+    document.getElementById("answer").value = null;
+    fetch("Busan_Univ.csv")
+      .then((response) => response.text())
+      .then((data) => {
+        const parsedData = Papa.parse(data).data;
+        const select = document.getElementById("major_select");
+        const selectedIndex = select.selectedIndex;
+        document.getElementById("major_aver_score").value = parsedData[selectedIndex + 1][7];
+        document.getElementById("major_line").value = parsedData[selectedIndex + 1][0];
+        if (
+          document.getElementById("change_score_res").value >
+          document.getElementById("major_aver_score").value
+        ) {
+          document.getElementById("answer").value = "평균이상";
+        } else document.getElementById("answer").value = "평균이하";
+      });
+  }
 }
