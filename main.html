@@ -3,7 +3,7 @@
   <head>
     <meta charset="euc-kr" />
     <title>부산대 환산점수 계산</title>
-    <script src="calculate.js"></script>
+    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="csv_read.js"></script>
   </head>
@@ -12,11 +12,11 @@
     <h1>부산대 환산점수 계산기</h1>
     <hr />
     <tr>
-      <td>계열 :</td>
-      <td>
-        <input type="radio" name="major" value="m_kor" checked="checked" /> 문과
-        <input type="radio" name="major" value="m_sci" /> 이과
-      </td>
+      <fieldset>
+        <legend>과 선택</legend>
+        <select id="major_select" onchange="show_major()"></select>
+        <input type="text" id="major_line" />
+      </fieldset>
     </tr>
     <hr />
 
@@ -54,16 +54,22 @@
       <input type="text" id="change_score_res" />
       <br /><br />
       <input type="reset" value="초기화" onclick="reset()" />
+      <input type="submit" value="결과 보기" onclick="show_res()" /><br /><br />
     </fieldset>
-    <br />
+    <hr />
     <fieldset>
-      과 선택<br />
-      <select id="major_select" onchange="show_res()"></select>
-      <input type="text" id="major_aver_score" />
-      <input type="text" id="major_line" />
-      <input type="text" id="answer" />
+      <legend>결과</legend>
+      <table>
+        <tr>
+          <td>평균 환산 점수 :</td>
+          <td><input type="text" id="major_aver_score" /></td>
+        </tr>
+        <tr>
+          <td>예상 결과 :</td>
+          <td><input type="text" id="answer" /></td>
+        </tr>
+      </table>
     </fieldset>
-
     <h4>!주의!</h4>
     <h5>~대충 주의에 쓸만한 내용~</h5>
   </body>
