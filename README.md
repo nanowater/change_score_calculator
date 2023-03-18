@@ -1,5 +1,9 @@
 # 너 재수없어!
 > 재수를 막기 위한 환산점수 계산기!
+
+작년의 데이터를 이용하여 대학을 안전하게 갈 수 있도록 도와주는 역할을 합니다!
+작년 해당 과의 모집인원,경쟁률,추합번호 등을 알 수 있습니다!
+
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
