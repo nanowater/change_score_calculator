@@ -2,6 +2,8 @@
 > 재수를 막기 위한 환산점수 계산기!
 
 https://almini718.github.io/change_score_calculator/Busan_Univ/Busan.html
+https://almini718.github.io/change_score_calculator/Pukyong_Univ/Pukyong.html
+
 
 작년의 데이터를 이용하여 대학을 안전하게 갈 수 있도록 도와주는 역할을 합니다!
 
