@@ -7,10 +7,6 @@ https://almini718.github.io/change_score_calculator/Busan_Univ/Busan.html
 
 작년 해당 과의 모집인원,경쟁률,추합번호 등을 알 수 있습니다!
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 ## 사용 방법
 
 1. 확인 할 과를 먼저 선택
@@ -30,8 +26,4 @@ email : nanowater718@gmail.com <br>
 Notion : https://nanowater.notion.site/project-1c6101d7bd5946f1a35ebbf3eb7aa52c
 
 <!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+
