@@ -26,7 +26,7 @@ https://almini718.github.io/change_score_calculator/Busan_Univ/Busan.html
 
 ## 정보
 
-email : nanowater718@gmail.com
+email : nanowater718@gmail.com <br>
 Notion : https://nanowater.notion.site/project-1c6101d7bd5946f1a35ebbf3eb7aa52c
 
 <!-- Markdown link & img dfn's -->
