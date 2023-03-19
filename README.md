@@ -15,6 +15,8 @@ https://almini718.github.io/change_score_calculator/Busan_Univ/Busan.html
 4. 결과 확인
 
 ## 업데이트 내역
+* v0.1.1
+    * 부경대 환산 점수 계산 및 결과 비교 가능.
 * v0.1
     * 더 많은 대학을 추가하기 위해 폴더생성 및 정리작업
 * NONE VERSION
