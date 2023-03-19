@@ -1,7 +1,7 @@
 # 너 재수없어!
 > 재수를 막기 위한 환산점수 계산기!
 
-https://almini718.github.io/change_score_test/main.html
+https://almini718.github.io/change_score_calculator/Busan_Univ/Busan.html
 
 작년의 데이터를 이용하여 대학을 안전하게 갈 수 있도록 도와주는 역할을 합니다!
 
@@ -19,13 +19,15 @@ https://almini718.github.io/change_score_test/main.html
 4. 결과 확인
 
 ## 업데이트 내역
-
+* V 0.1
+    * 더 많은 대학을 추가하기 위해 폴더생성 및 정리작업
 * NONE VERSION
     * 부산대 환산 점수 계산 및 결과 비교 가능.
 
 ## 정보
 
 email : nanowater718@gmail.com
+Notion : https://nanowater.notion.site/project-1c6101d7bd5946f1a35ebbf3eb7aa52c
 
 <!-- Markdown link & img dfn's -->
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
