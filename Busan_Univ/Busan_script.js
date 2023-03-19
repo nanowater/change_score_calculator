@@ -115,6 +115,6 @@ function show_res() {
       document.getElementById("answer").value = "평균이상";
     } else if (input_res >= input_70) {
       document.getElementById("answer").value = "70% 이상";
-    } else document.getElementById("answer").value = "평균이하";
+    } else document.getElementById("answer").value = "70% 이하";
   }
 }
