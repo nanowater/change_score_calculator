@@ -28,7 +28,11 @@ function reset() {
   document.getElementById("hist").value = null;
   document.getElementById("tam1").value = null;
   document.getElementById("tam2").value = null;
-  document.getElementById("change_score_res").value = null;
+  document.getElementById("kor_grade").value = null;
+  document.getElementById("math_grade").value = null;
+  document.getElementById("tam1_grade").value = null;
+  document.getElementById("tam2_grade").value = null;
+  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
   document.getElementById("major_aver_score").value = null;
   document.getElementById("major_70_score").value = null;
   document.getElementById("answer").value = null;
@@ -53,21 +57,12 @@ function show_major() {
       document.getElementById("v3").innerHTML = parsedData[selectedIndex][4];
       document.getElementById("v4").innerHTML = parsedData[selectedIndex][5];
       document.getElementById("v5").innerHTML = parsedData[selectedIndex][8];
-      if (document.getElementById("major_line").value == "인문·사회계") {
-        document.getElementById("math_select").disabled = true;
-        document.getElementById("tam1_select").disabled = true;
-        document.getElementById("tam2_select").disabled = true;
-      } else if (document.getElementById("major_line").value == "자연계") {
-        document.getElementById("math_select").disabled = false;
-        document.getElementById("tam1_select").disabled = false;
-        document.getElementById("tam2_select").disabled = false;
-      }
     });
 }
 
 //점수 계산
 function cac() {
-  document.getElementById("change_score_res").value = null;
+  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
   var v_major_line = document.getElementById("major_line").value;
   var v_major = document.getElementById("major").value;
   var v_kor = Number(document.getElementById("kor").value);
@@ -78,19 +73,13 @@ function cac() {
   var v_tam2 = Number(document.getElementById("tam2").value);
   var v_add_Univ = document.getElementById("add_Univ").value;
   var res = 0;
-
+  alert("o");
   //선택과목관련
   const v_math_select = document.getElementById("math_select").value;
-  const v_tam1_select = document.getElementById("tam1_select").value;
-  const v_tam2_select = document.getElementById("tam2_select").value;
-  const v_tam1_label =
-    document.getElementById("tam1_select").options[
-      document.getElementById("tam1_select").selectedIndex
-    ].parentNode.label;
-  const v_tam2_label =
-    document.getElementById("tam2_select").options[
-      document.getElementById("tam2_select").selectedIndex
-    ].parentNode.label;
+  var v_tam1_select = document.getElementById("tam1_select").value;
+  var v_tam2_select = document.getElementById("tam2_select").value;
+  const v_tam1_label = document.getElementById("tam1_select").options[document.getElementById("tam1_select").selectedIndex].parentNode.label;
+  const v_tam2_label = document.getElementById("tam2_select").options[document.getElementById("tam2_select").selectedIndex].parentNode.label;
 
   if (!v_kor || !(0 <= v_kor && v_kor <= 200)) {
     alert("국어 표준점수를 확인해주세요!");
@@ -104,7 +93,14 @@ function cac() {
     alert("탐구1 표준 점수를 확인해주세요!");
   } else if (!v_tam2 || !(0 <= v_tam2 && v_tam2 <= 100)) {
     alert("탐구2 표준 점수를 확인해주세요!");
+  } else if (v_tam1_select == v_tam2_select) {
+    alert("탐구 과목 2개가 같은 과목입니다!");
   } else {
+    alert("ok");
+    kor_grade_cac();
+    math_grade_cac();
+    tam1_grade_cac();
+    tam2_grade_cac();
     if (v_major_line == "예체능") {
       if (v_eng == 1) v_eng = 280;
       else if (v_eng == 2) v_eng = 274.4;
@@ -132,11 +128,7 @@ function cac() {
     }
     //가산점
     if (v_major_line == "자연계") {
-      if (
-        v_add_Univ == "해사대학" &&
-        v_major != "해양경찰학부(기관전공)" &&
-        v_major != "해양경찰학부(항해전공)"
-      ) {
+      if (v_add_Univ == "해사대학" && v_major != "해양경찰학부(기관전공)" && v_major != "해양경찰학부(항해전공)") {
         if (v_math_select == "미적분") v_math *= 1.1;
       } else if (v_add_Univ == "해양과학기술융합대학" && v_major != "해양스포츠과학과") {
         if (v_math_select == "미적분") v_math *= 1.2;
@@ -154,7 +146,7 @@ function cac() {
       res += (v_tam1 * 4 * 20) / 100;
       res += (v_tam2 * 4 * 20) / 100;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else if (v_major_line == "자연계") {
       res += (v_kor * 4 * 22.5) / 100;
       res += (v_math * 4 * 32.5) / 100;
@@ -162,7 +154,7 @@ function cac() {
       res += (v_tam1 * 4 * 20) / 100;
       res += (v_tam2 * 4 * 20) / 100;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else if (v_major_line == "예체능") {
       let largest1 = -Infinity;
       let largest2 = -Infinity;
@@ -191,7 +183,7 @@ function cac() {
       res += (largest2 * 4 * 35) / 100;
       res += ((v_tam1 + v_tam2) * 4 * 30) / 100;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else {
       alert("에러! 알수없는 계열정보");
     }
@@ -200,7 +192,7 @@ function cac() {
 
 //결과 출력
 function show_res() {
-  var input_res = document.getElementById("change_score_res").value;
+  var input_res = document.getElementById("change_score_res").innerHTML;
   var input_aver = document.getElementById("major_aver_score").value;
   var input_70 = document.getElementById("major_70_score").value;
   if (input_res == "") {

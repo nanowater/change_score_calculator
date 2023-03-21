@@ -22,7 +22,7 @@ function read_csv() {
 
 //점수 계산
 function cac() {
-  document.getElementById("change_score_res").value = null;
+  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
   var v_major = document.getElementById("major_line").value;
   var v_kor = Number(document.getElementById("kor").value);
   var v_math = Number(document.getElementById("math").value);
@@ -31,6 +31,12 @@ function cac() {
   var v_tam1 = Number(document.getElementById("tam1").value);
   var v_tam2 = Number(document.getElementById("tam2").value);
   var res = 0;
+
+  //선택과목관련
+  var v_kor_select = document.getElementById("kor_select").value;
+  var v_math_select = document.getElementById("math_select").value;
+  var v_tam1_select = document.getElementById("tam1_select").value;
+  var v_tam2_select = document.getElementById("tam2_select").value;
 
   if (!v_kor || !(0 <= v_kor && v_kor <= 200)) {
     alert("국어 표준점수를 확인해주세요!");
@@ -44,7 +50,14 @@ function cac() {
     alert("탐구1 표준 점수를 확인해주세요!");
   } else if (!v_tam2 || !(0 <= v_tam2 && v_tam2 <= 100)) {
     alert("탐구2 표준 점수를 확인해주세요!");
+  } else if (v_tam1_select == v_tam2_select) {
+    alert("탐구 과목 2개가 같은 과목입니다!");
   } else {
+    kor_grade_cac();
+    math_grade_cac();
+    tam1_grade_cac();
+    tam2_grade_cac();
+
     res += 200 - 10 * (v_eng - 1);
     if (v_hist <= 4) res += 10;
     else res += 10 - (v_hist - 4) * 0.2;
@@ -54,14 +67,14 @@ function cac() {
       res += v_tam1 * 1.25;
       res += v_tam2 * 1.25;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else if (v_major == "자연계") {
       res += v_kor * 1;
       res += v_math * 1.5;
       res += v_tam1 * 1.5;
       res += v_tam2 * 1.5;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else {
       alert("에러! 알수없는 계열정보");
     }
@@ -76,7 +89,11 @@ function reset() {
   document.getElementById("hist").value = null;
   document.getElementById("tam1").value = null;
   document.getElementById("tam2").value = null;
-  document.getElementById("change_score_res").value = null;
+  document.getElementById("kor_grade").value = null;
+  document.getElementById("math_grade").value = null;
+  document.getElementById("tam1_grade").value = null;
+  document.getElementById("tam2_grade").value = null;
+  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
   document.getElementById("major_aver_score").value = null;
   document.getElementById("major_70_score").value = null;
   document.getElementById("answer").value = null;
@@ -105,7 +122,7 @@ function show_major() {
 
 //결과 출력
 function show_res() {
-  var input_res = document.getElementById("change_score_res").value;
+  var input_res = document.getElementById("change_score_res").innerHTML;
   var input_aver = document.getElementById("major_aver_score").value;
   var input_70 = document.getElementById("major_70_score").value;
   if (input_res == "") {
@@ -115,6 +132,6 @@ function show_res() {
       document.getElementById("answer").value = "평균이상";
     } else if (input_res >= input_70) {
       document.getElementById("answer").value = "70% 이상";
-    } else document.getElementById("answer").value = "70% 이하";
+    } else document.getElementById("answer").value = "평균이하";
   }
 }

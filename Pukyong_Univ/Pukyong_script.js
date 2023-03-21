@@ -22,12 +22,17 @@ function read_csv() {
 
 //초기화
 function reset() {
+  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
   document.getElementById("kor").value = null;
   document.getElementById("math").value = null;
   document.getElementById("eng").value = null;
   document.getElementById("hist").value = null;
   document.getElementById("tam1").value = null;
   document.getElementById("tam2").value = null;
+  document.getElementById("kor_grade").value = null;
+  document.getElementById("math_grade").value = null;
+  document.getElementById("tam1_grade").value = null;
+  document.getElementById("tam2_grade").value = null;
   document.getElementById("change_score_res").value = null;
   document.getElementById("major_aver_score").value = null;
   document.getElementById("major_80_score").value = null;
@@ -54,21 +59,12 @@ function show_major() {
       document.getElementById("v4").innerHTML = parsedData[selectedIndex][5];
       document.getElementById("v5").innerHTML = parsedData[selectedIndex][8];
       document.getElementById("v6").innerHTML = parsedData[selectedIndex][9];
-      if (document.getElementById("major_line").value == "인문사회계") {
-        document.getElementById("math_select").disabled = true;
-        document.getElementById("tam1_select").disabled = true;
-        document.getElementById("tam2_select").disabled = true;
-      } else if (document.getElementById("major_line").value == "자연계") {
-        document.getElementById("math_select").disabled = false;
-        document.getElementById("tam1_select").disabled = false;
-        document.getElementById("tam2_select").disabled = false;
-      }
     });
 }
 
 //점수 계산
 function cac() {
-  document.getElementById("change_score_res").value = null;
+  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
   var v_major_line = document.getElementById("major_line").value;
   var v_major = document.getElementById("major").value;
   var v_kor = Number(document.getElementById("kor").value);
@@ -97,7 +93,14 @@ function cac() {
     alert("탐구1 표준 점수를 확인해주세요!");
   } else if (!v_tam2 || !(0 <= v_tam2 && v_tam2 <= 100)) {
     alert("탐구2 표준 점수를 확인해주세요!");
+  } else if (v_tam1_select == v_tam2_select) {
+    alert("탐구 과목 2개가 같은 과목입니다!");
   } else {
+    kor_grade_cac();
+    math_grade_cac();
+    tam1_grade_cac();
+    tam2_grade_cac();
+
     if (v_eng == 1) v_eng = 200;
     else if (v_eng == 2) v_eng = 194;
     else if (v_eng == 3) v_eng = 186;
@@ -117,12 +120,7 @@ function cac() {
     }
     if (v_add_Univ == "공과대학" || v_add_Univ == "정보융합대학") {
       if (v_math_select == "미적분" || v_math_select == "기하") v_math *= 1.1;
-    } else if (
-      v_add_Univ == "글로벌자율전공학부" ||
-      v_add_Univ == "자연과학대학" ||
-      v_add_Univ == "수산과학대학" ||
-      v_add_Univ == "환경·해양대학"
-    ) {
+    } else if (v_add_Univ == "글로벌자율전공학부" || v_add_Univ == "자연과학대학" || v_add_Univ == "수산과학대학" || v_add_Univ == "환경·해양대학") {
       if (v_math_select == "미적분" || v_math_select == "기하") v_math *= 1.07;
     }
 
@@ -133,7 +131,7 @@ function cac() {
       res += v_tam1 * 1.25;
       res += v_tam2 * 1.25;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else if (v_major_line == "자연계") {
       res += v_kor * 1.25;
       res += v_math * 1.5;
@@ -141,14 +139,14 @@ function cac() {
       res += v_tam1 * 1.5;
       res += v_tam2 * 1.5;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else if (v_major_line == "예능" || v_major_line == "체능") {
       res += v_kor * 1.75;
       res += v_eng * 1.75;
       res += v_tam1 * 1.5;
       res += v_tam2 * 1.5;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").value = res;
+      document.getElementById("change_score_res").innerHTML += res;
     } else {
       alert("에러! 알수없는 계열정보");
     }
@@ -157,7 +155,7 @@ function cac() {
 
 //결과 출력
 function show_res() {
-  var input_res = document.getElementById("change_score_res").value;
+  var input_res = document.getElementById("change_score_res").innerHTML;
   var input_aver = document.getElementById("major_aver_score").value;
   var input_80 = document.getElementById("major_80_score").value;
   if (input_res == "") {
