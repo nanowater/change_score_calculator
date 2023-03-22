@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="euc-kr" />
+    <title>부산대 환산점수 계산</title>
+    <script src="Busan_script.js"></script>
+    <script src="../cac_grade.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      read_csv();
+    </script>
+    <h1>부산대 환산점수 계산기</h1>
+    <hr />
+    <tr>
+      <fieldset>
+        <legend>과 선택</legend>
+        <select id="major_select" onchange="show_major()"></select>
+        <input type="text" id="major_line" readonly />
+        <hr />
+        <table border="1">
+          <thead>
+            <tr>
+              <th>모집인원</th>
+              <th>지원인원</th>
+              <th>경쟁률</th>
+              <th>합격인원</th>
+              <th>최종추합번호</th>
+              <th>수능전형</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="v1"></td>
+              <td id="v2"></td>
+              <td id="v3"></td>
+              <td id="v4"></td>
+              <td id="v5"></td>
+              <td id="v6"></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </tr>
+    <hr />
+
+    <fieldset>
+      <legend>점수 입력</legend>
+      <table>
+        <tr>
+          <td>국어 표준점수 :</td>
+          <td><input id="kor" type="text" /></td>
+          <td>
+            <select id="kor_select">
+              <option selected disabled>과목선택</option>
+              <option>화법과 작문</option>
+              <option>언어와 매체</option>
+            </select>
+          </td>
+          <td><input id="kor_grade" readonly /></td>
+        </tr>
+        <tr>
+          <td>수학 표준점수 :</td>
+          <td><input id="math" type="text" /></td>
+          <td>
+            <select id="math_select">
+              <option selected disabled>과목선택</option>
+              <option>미적분</option>
+              <option>기하</option>
+              <option>확률과 통계</option>
+            </select>
+          </td>
+          <td><input id="math_grade" readonly /></td>
+        </tr>
+        <tr>
+          <td>영어 등급:</td>
+          <td><input id="eng" type="text" /></td>
+        </tr>
+        <tr>
+          <td>한국사 등급 :</td>
+          <td><input id="hist" type="text" /></td>
+        </tr>
+        <tr>
+          <td>탐구1 표준점수 :</td>
+          <td><input id="tam1" type="text" /></td>
+          <td>
+            <select id="tam1_select">
+              <option selected disabled>과목선택</option>
+              <optgroup label="사회탐구">
+                <option>생활과 윤리</option>
+                <option>윤리와 사상</option>
+                <option>한국지리</option>
+                <option>세계지리</option>
+                <option>동아시아사</option>
+                <option>세계사</option>
+                <option>경제</option>
+                <option>정치와 법</option>
+                <option>사회 문화</option>
+              </optgroup>
+              <optgroup label="과학탐구">
+                <option>물리학I</option>
+                <option>화학I</option>
+                <option>생명과학I</option>
+                <option>지구과학I</option>
+                <option>물리학II</option>
+                <option>화학II</option>
+                <option>생명과학II</option>
+                <option>지구과학II</option>
+              </optgroup>
+            </select>
+          </td>
+          <td><input id="tam1_grade" readonly /></td>
+        </tr>
+        <tr>
+          <td>탐구2 표준점수 :</td>
+          <td><input id="tam2" type="text" /></td>
+          <td>
+            <select id="tam2_select">
+              <option selected disabled>과목선택</option>
+              <optgroup label="사회탐구">
+                <option>생활과 윤리</option>
+                <option>윤리와 사상</option>
+                <option>한국지리</option>
+                <option>세계지리</option>
+                <option>동아시아사</option>
+                <option>세계사</option>
+                <option>경제</option>
+                <option>정치와 법</option>
+                <option>사회 문화</option>
+              </optgroup>
+              <optgroup label="과학탐구">
+                <option>물리학I</option>
+                <option>화학I</option>
+                <option>생명과학I</option>
+                <option>지구과학I</option>
+                <option>물리학II</option>
+                <option>화학II</option>
+                <option>생명과학II</option>
+                <option>지구과학II</option>
+              </optgroup>
+            </select>
+          </td>
+          <td><input id="tam2_grade" readonly /></td>
+        </tr>
+      </table>
+      <br />
+      <input type="submit" value="점수 계산" onclick="cac()" /><br /><br />
+      <p type="text" id="change_score_res">환산 점수 :</p>
+      <br /><br />
+      <input type="reset" value="초기화" onclick="reset()" />
+      <input type="submit" value="결과 보기" onclick="show_res()" /><br /><br />
+    </fieldset>
+    <hr />
+    <fieldset>
+      <legend>결과</legend>
+      <table>
+        <tr>
+          <td><input type="hidden" id="major_aver_score" /></td>
+          <td><input type="hidden" id="major_70_score" /></td>
+          <td><input type="text" id="answer" readonly /></td>
+        </tr>
+      </table>
+    </fieldset>
+    <footer>
+      <h4>!주의!</h4>
+      <h5>본 사이트는 단순히 참고용을 목적으로 제작되었으며, 2022학년도의 입시 결과를 바탕으로 하여 다소 부정확할 수 있습니다.</h5>
+    </footer>
+  </body>
+</html>
