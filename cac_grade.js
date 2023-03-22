@@ -31,7 +31,7 @@ function math_grade_cac() {
   const v_math_select = document.getElementById("math_select").value;
   var v_math_grade = 9;
   if (v_math_select == "미적분") {
-    if (v_math >= 137) v_kor_grade = 1;
+    if (v_math >= 137) v_math_grade = 1;
     else if (v_math >= 127) v_math_grade = 2;
     else if (v_math >= 117) v_math_grade = 3;
     else if (v_math >= 106) v_math_grade = 4;
