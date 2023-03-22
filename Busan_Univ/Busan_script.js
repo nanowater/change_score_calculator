@@ -33,8 +33,6 @@ function cac() {
   var res = 0;
 
   //선택과목관련
-  var v_kor_select = document.getElementById("kor_select").value;
-  var v_math_select = document.getElementById("math_select").value;
   var v_tam1_select = document.getElementById("tam1_select").value;
   var v_tam2_select = document.getElementById("tam2_select").value;
 

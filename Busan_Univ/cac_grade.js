@@ -62,7 +62,7 @@ function math_grade_cac() {
 function tam1_grade_cac() {
   var v_tam1 = Number(document.getElementById("tam1").value);
   const v_tam1_select = document.getElementById("tam1_select").value;
-  var tam1_grade = 9;
+  var v_tam1_grade = 9;
 
   if (v_tam1_select == "생활과 윤리") {
     if (v_tam1 >= 64) v_tam1_grade = 1;
@@ -224,6 +224,7 @@ function tam1_grade_cac() {
 function tam2_grade_cac() {
   var v_tam2 = Number(document.getElementById("tam2").value);
   const v_tam2_select = document.getElementById("tam2_select").value;
+  var v_tam2_grade = 9;
   if (v_tam2_select == "생활과 윤리") {
     if (v_tam2 >= 64) v_tam2_grade = 1;
     else if (v_tam2 >= 62) v_tam2_grade = 2;

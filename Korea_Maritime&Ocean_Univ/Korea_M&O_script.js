@@ -73,7 +73,6 @@ function cac() {
   var v_tam2 = Number(document.getElementById("tam2").value);
   var v_add_Univ = document.getElementById("add_Univ").value;
   var res = 0;
-  alert("o");
   //선택과목관련
   const v_math_select = document.getElementById("math_select").value;
   var v_tam1_select = document.getElementById("tam1_select").value;
@@ -96,7 +95,6 @@ function cac() {
   } else if (v_tam1_select == v_tam2_select) {
     alert("탐구 과목 2개가 같은 과목입니다!");
   } else {
-    alert("ok");
     kor_grade_cac();
     math_grade_cac();
     tam1_grade_cac();
