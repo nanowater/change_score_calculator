@@ -29,9 +29,8 @@ function kor_grade_cac() {
 function math_grade_cac() {
   var v_math = Number(document.getElementById("math").value);
   const v_math_select = document.getElementById("math_select").value;
-  var v_math_grade = 9;
-  if (v_math_select == "미적분") {
-    if (v_math >= 137) v_kor_grade = 1;
+  var v_math_grade = -1;
+  if (v_math >= 137) v_math_grade = 1;
     else if (v_math >= 127) v_math_grade = 2;
     else if (v_math >= 117) v_math_grade = 3;
     else if (v_math >= 106) v_math_grade = 4;
@@ -40,27 +39,6 @@ function math_grade_cac() {
     else if (v_math >= 75) v_math_grade = 7;
     else if (v_math >= 71) v_math_grade = 8;
     else v_math_grade = 9;
-  } else if (v_math_select == "기하") {
-    if (v_math >= 137) v_math_grade = 1;
-    else if (v_math >= 127) v_math_grade = 2;
-    else if (v_math >= 117) v_math_grade = 3;
-    else if (v_math >= 106) v_math_grade = 4;
-    else if (v_math >= 92) v_math_grade = 5;
-    else if (v_math >= 81) v_math_grade = 6;
-    else if (v_math >= 75) v_math_grade = 7;
-    else if (v_math >= 71) v_math_grade = 8;
-    else v_math_grade = 9;
-  } else if (v_math_select == "확률과 통계") {
-    if (v_math >= 137) v_math_grade = 1;
-    else if (v_math >= 127) v_math_grade = 2;
-    else if (v_math >= 117) v_math_grade = 3;
-    else if (v_math >= 106) v_math_grade = 4;
-    else if (v_math >= 92) v_math_grade = 5;
-    else if (v_math >= 81) v_math_grade = 6;
-    else if (v_math >= 75) v_math_grade = 7;
-    else if (v_math >= 71) v_math_grade = 8;
-    else v_math_grade = 9;
-  }
   document.getElementById("math_grade").value = v_math_grade + "등급";
 }
 
