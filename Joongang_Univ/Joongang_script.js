@@ -56,16 +56,7 @@ function cac() {
     tam1_grade_cac();
     tam2_grade_cac();
 
-    if (v_eng == 1) res += 200;
-    else if (v_eng == 2) res += 198;
-    else if (v_eng == 3) res += 195;
-    else if (v_eng == 4) res += 190;
-    else if (v_eng == 5) res += 185;
-    else if (v_eng == 6) res += 180;
-    else if (v_eng == 7) res += 175;
-    else if (v_eng == 8) res += 170;
-    else res += 165;
-
+    res += 200 - 10 * (v_eng - 1);
     if (v_hist <= 4) res += 10;
     else res += 10 - (v_hist - 4) * 0.2;
     if (v_major == "인문사회계") {
