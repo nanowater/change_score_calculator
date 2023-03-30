@@ -4,7 +4,8 @@
     <script src="https://kit.fontawesome.com/677c241b5a.js" crossorigin="anonymous"></script>
     <title>너 재수없어!</title>
     <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1" />
-    <link rel="stylesheet" href="/change_score_calculator/index_Style.css" />
+    <link rel="stylesheet" href="index_Style.css" />
+    <script src="Univ_list_view.js"></script>
     <style>
       body {
         background-color: #f0f5f9;
@@ -52,24 +53,6 @@
     <p class="updatelog">업데이트 내용</p>
     <a class="updatever"> v0.1.4b<br /> </a>
     <a class="updatelog_s"> index페이지에 css가 적용되었습니다.<br />아직까지 오류가 많을 수 있습니다. </a>
-    <script>
-      // 메뉴에 학교이름 추가
-      const arr = [
-        ["부산대", "https://almini718.github.io/change_score_calculator/Busan_Univ/Busan.html"],
-        ["부경대", "https://almini718.github.io/change_score_calculator/Pukyong_Univ/Pukyong.html"],
-        ["한국해양대", "https://almini718.github.io/change_score_calculator/Korea_Maritime&Ocean_Univ/Korea_M&O.html"],
-      ];
-      arr.sort();
-      const menuList = document.querySelector(".menu");
-      arr.forEach((item) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = item[1];
-        a.textContent = item[0];
-        li.appendChild(a);
-        menuList.appendChild(li);
-      });
-    </script>
     <center class="under_desc">
       <pre>
 본 사이트는 단순히 참고용을 목적으로 제작되었으며, 2022학년도의 입시 결과를 바탕으로 하여 다소 부정확할 수 있습니다.
@@ -78,6 +61,7 @@
     </center>
 
     <script>
+      load_Univ_list();
       //학교 목록 버튼
       const menuToggle = document.getElementById("Univ_list");
       const menuBar = document.querySelector(".menu-bar");

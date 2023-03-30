@@ -2,27 +2,57 @@
 <html>
   <head>
     <meta charset="euc-kr" />
-    <title>부산대 환산점수 계산</title>
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1" />
+    <script src="https://kit.fontawesome.com/677c241b5a.js" crossorigin="anonymous"></script>
+    <title>부산대 환산점수 계산기</title>
     <script src="Busan_script.js"></script>
     <script src="../cac_grade.js"></script>
+    <script src="../Univ_list_view.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link rel="stylesheet" href="../Styles.css" />
+    <style>
+      body {
+        background-color: #f0f5f9;
+      }
+    </style>
   </head>
 
   <body>
     <script>
       read_csv();
     </script>
-    <h1>부산대 환산점수 계산기</h1>
-    <hr />
+    <div class="container">
+      <p class="title">부산대 환산점수 계산기</p>
+      <div class="buttons">
+        <button class="buttonright" onclick="window.location.href='https://almini718.github.io/change_score_calculator/'">
+          <p><i class="fa-solid fa-house"></i></p>
+        </button>
+        <button class="buttonright" id="Univ_list">
+          <p><i class="fa-solid fa-list"> </i></p>
+        </button>
+
+        <div class="menu-bar">
+          <ul>
+            <li>
+              <button id="hide-menu" class="hide-button">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <ul class="menu">
+                <!-- 여기에 메뉴 항목들이 동적으로 추가됩니다. -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <tr>
       <fieldset>
-        <legend>과 선택</legend>
-        <select id="major_select" onchange="show_major()"></select>
-        <input type="text" id="major_line" readonly />
-        <hr />
-        <table border="1">
+        <legend class="sector_name">과 선택</legend>
+        <select id="major_select" onchange="show_major()" class="major_menubar"></select>
+        <input type="text" id="major_line" class="major_line" readonly />
+        <table border="1" class="chart chart_style">
           <thead>
-            <tr>
+            <tr class="chart_names charttr">
               <th>모집인원</th>
               <th>지원인원</th>
               <th>경쟁률</th>
@@ -32,8 +62,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td id="v1"></td>
+            <tr class="charttr">
+              <td id="v1"><p></p></td>
               <td id="v2"></td>
               <td id="v3"></td>
               <td id="v4"></td>
@@ -44,49 +74,48 @@
         </table>
       </fieldset>
     </tr>
-    <hr />
 
     <fieldset>
-      <legend>점수 입력</legend>
+      <legend class="sector_name">점수 입력</legend>
       <table>
         <tr>
-          <td>국어 표준점수 :</td>
-          <td><input id="kor" type="text" /></td>
+          <td class="subject_class_name">국어 표준점수 :</td>
+          <td><input id="kor" type="text" class="score_input" /></td>
           <td>
-            <select id="kor_select">
+            <select id="kor_select" class="subject_name">
               <option selected disabled>과목선택</option>
               <option>화법과 작문</option>
               <option>언어와 매체</option>
             </select>
           </td>
-          <td><input id="kor_grade" readonly /></td>
+          <td><input id="kor_grade" class="grade_value" readonly /></td>
         </tr>
         <tr>
-          <td>수학 표준점수 :</td>
-          <td><input id="math" type="text" /></td>
+          <td class="subject_class_name">수학 표준점수 :</td>
+          <td><input id="math" type="text" class="score_input" /></td>
           <td>
-            <select id="math_select">
+            <select id="math_select" class="subject_name">
               <option selected disabled>과목선택</option>
               <option>미적분</option>
               <option>기하</option>
               <option>확률과 통계</option>
             </select>
           </td>
-          <td><input id="math_grade" readonly /></td>
+          <td><input id="math_grade" class="grade_value" readonly /></td>
         </tr>
         <tr>
-          <td>영어 등급:</td>
-          <td><input id="eng" type="text" /></td>
+          <td class="subject_class_name">영어 등급:</td>
+          <td><input id="eng" type="text" class="score_input" /></td>
         </tr>
         <tr>
-          <td>한국사 등급 :</td>
-          <td><input id="hist" type="text" /></td>
+          <td class="subject_class_name">한국사 등급 :</td>
+          <td><input id="hist" type="text" class="score_input" /></td>
         </tr>
         <tr>
-          <td>탐구1 표준점수 :</td>
-          <td><input id="tam1" type="text" /></td>
+          <td class="subject_class_name">탐구1 표준점수 :</td>
+          <td><input id="tam1" type="text" class="score_input" /></td>
           <td>
-            <select id="tam1_select">
+            <select id="tam1_select" class="subject_name">
               <option selected disabled>과목선택</option>
               <optgroup label="사회탐구">
                 <option>생활과 윤리</option>
@@ -111,13 +140,13 @@
               </optgroup>
             </select>
           </td>
-          <td><input id="tam1_grade" readonly /></td>
+          <td><input id="tam1_grade" class="grade_value" readonly /></td>
         </tr>
         <tr>
-          <td>탐구2 표준점수 :</td>
-          <td><input id="tam2" type="text" /></td>
+          <td class="subject_class_name">탐구2 표준점수 :</td>
+          <td><input id="tam2" type="text" class="score_input" /></td>
           <td>
-            <select id="tam2_select">
+            <select id="tam2_select" class="subject_name">
               <option selected disabled>과목선택</option>
               <optgroup label="사회탐구">
                 <option>생활과 윤리</option>
@@ -142,30 +171,52 @@
               </optgroup>
             </select>
           </td>
-          <td><input id="tam2_grade" readonly /></td>
+          <td><input id="tam2_grade" class="grade_value" readonly /></td>
         </tr>
       </table>
       <br />
-      <input type="submit" value="점수 계산" onclick="cac()" /><br /><br />
-      <p type="text" id="change_score_res">환산 점수 :</p>
-      <br /><br />
-      <input type="reset" value="초기화" onclick="reset()" />
-      <input type="submit" value="결과 보기" onclick="show_res()" /><br /><br />
+      <input type="submit" value="점수 계산" onclick="cac()" class="cac_button" /><br /><br />
+      <input type="hidden" id="major_aver_score" />
+      <input type="hidden" id="major_70_score" />
     </fieldset>
-    <hr />
-    <fieldset>
-      <legend>결과</legend>
-      <table>
-        <tr>
-          <td><input type="hidden" id="major_aver_score" /></td>
-          <td><input type="hidden" id="major_70_score" /></td>
-          <td><input type="text" id="answer" readonly /></td>
-        </tr>
-      </table>
-    </fieldset>
+
+    <div class="fieldset-wrapper">
+      <fieldset class="sep_fieldset">
+        <p class="sep_fieldset_text">환산점수</p>
+        <p class="sep_fieldset_value" id="change_score_res"></p>
+      </fieldset>
+      <fieldset class="sep_fieldset sep_fieldset_gradient">
+        <p class="sep_fieldset_text" style="color: #ffffff">결과</p>
+        <p class="sep_fieldset_value" id="answer" style="color: #ffffff"></p>
+      </fieldset>
+    </div>
+    <div style="display: grid; place-items: center">
+      <input type="button" value="다시하기" onclick="reset()" class="reset_button" />
+    </div>
+
+    <script>
+      load_Univ_list();
+      //학교 목록 버튼
+      const menuToggle = document.getElementById("Univ_list");
+      const menuBar = document.querySelector(".menu-bar");
+
+      menuToggle.addEventListener("click", function () {
+        menuBar.classList.toggle("show-menu");
+      });
+
+      const hideMenuButton = document.getElementById("hide-menu");
+      hideMenuButton.addEventListener("click", function () {
+        menuBar.classList.remove("show-menu");
+      });
+    </script>
+
     <footer>
-      <h4>!주의!</h4>
-      <h5>본 사이트는 단순히 참고용을 목적으로 제작되었으며, 2022학년도의 입시 결과를 바탕으로 하여 다소 부정확할 수 있습니다.</h5>
+      <center class="under_desc">
+        <pre>
+  본 사이트는 단순히 참고용을 목적으로 제작되었으며, 2022학년도의 입시 결과를 바탕으로 하여 다소 부정확할 수 있습니다.
+          Copyright 2023.  TEAM &lt;!DOCTYPE html&gt;.  All right reserved.</pre
+        >
+      </center>
     </footer>
   </body>
 </html>

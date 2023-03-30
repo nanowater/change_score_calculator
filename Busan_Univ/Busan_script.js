@@ -22,7 +22,7 @@ function read_csv() {
 
 //점수 계산
 function cac() {
-  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
+  document.getElementById("change_score_res").innerHTML = " ";
   var v_major = document.getElementById("major_line").value;
   var v_kor = Number(document.getElementById("kor").value);
   var v_math = Number(document.getElementById("math").value);
@@ -74,17 +74,25 @@ function cac() {
       res += v_tam1 * 1.25;
       res += v_tam2 * 1.25;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").innerHTML += res;
+      document.getElementById("change_score_res").innerHTML = res;
     } else if (v_major == "자연계") {
       res += v_kor * 1;
       res += v_math * 1.5;
       res += v_tam1 * 1.5;
       res += v_tam2 * 1.5;
       res = res.toFixed(2);
-      document.getElementById("change_score_res").innerHTML += res;
+      document.getElementById("change_score_res").innerHTML = res;
     } else {
       alert("에러! 알수없는 계열정보");
+      return;
     }
+    var input_aver = document.getElementById("major_aver_score").value;
+    var input_70 = document.getElementById("major_70_score").value;
+    if (res >= input_aver) {
+      document.getElementById("answer").innerHTML = "평균이상";
+    } else if (res >= input_70) {
+      document.getElementById("answer").innerHTML = "70% 이상";
+    } else document.getElementById("answer").innerHTML = "평균이하";
   }
 }
 
@@ -100,15 +108,15 @@ function reset() {
   document.getElementById("math_grade").value = null;
   document.getElementById("tam1_grade").value = null;
   document.getElementById("tam2_grade").value = null;
-  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
+  document.getElementById("change_score_res").innerHTML = null;
   document.getElementById("major_aver_score").value = null;
   document.getElementById("major_70_score").value = null;
-  document.getElementById("answer").value = null;
+  document.getElementById("answer").innerHTML = null;
 }
 
 //과 선택
 function show_major() {
-  document.getElementById("answer").value = null;
+  document.getElementById("answer").innerHTML = null;
   fetch("Busan_csv.csv")
     .then((response) => response.text())
     .then((data) => {
@@ -125,20 +133,4 @@ function show_major() {
       document.getElementById("v5").innerHTML = parsedData[selectedIndex][6];
       document.getElementById("v6").innerHTML = parsedData[selectedIndex][9];
     });
-}
-
-//결과 출력
-function show_res() {
-  var input_res = document.getElementById("change_score_res").innerHTML;
-  var input_aver = document.getElementById("major_aver_score").value;
-  var input_70 = document.getElementById("major_70_score").value;
-  if (input_res == "") {
-    alert("환산 점수를 계산해주세요!");
-  } else {
-    if (input_res >= input_aver) {
-      document.getElementById("answer").value = "평균이상";
-    } else if (input_res >= input_70) {
-      document.getElementById("answer").value = "70% 이상";
-    } else document.getElementById("answer").value = "평균이하";
-  }
 }

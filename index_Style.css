@@ -32,7 +32,7 @@
 .title {
   font-family: "tjr_medium";
   font-size: 450%;
-  color: #000000;
+  color: #004d9d;
   margin-bottom: 1%;
 }
 
@@ -54,7 +54,7 @@
 .howtouse_s {
   font-family: "tjr_regular";
   font-size: 300%;
-  color: #5b73a7;
+  color: #004d9d;
   margin-bottom: 5%;
 }
 
@@ -106,14 +106,15 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #5b73a7;
+  color: #004d9d;
 }
 
 .hide-button {
+  margin-top: 5%;
   background: #011e35;
   color: #ffffff;
   font-family: "tjr_bold";
-  font-size: 60%;
+  font-size: 100%;
   outline: none;
   border: none;
   box-shadow: none;
@@ -165,12 +166,14 @@
   filter: blur(5px);
 }
 
+/*///////////////////////////////////////////////////////*/
+
 /*모바일인경우*/
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 985px) {
   .title {
-    font-size: 180%;
+    align-items: center;
+    font-size: 200%;
     color: #000000;
-    margin-bottom: 1%;
   }
 
   .summary {
@@ -200,15 +203,8 @@
   .under_desc {
     margin-top: 3%;
     top: 90%;
-    left: 50%; /* 왼쪽 위치를 페이지의 중앙에 위치하도록 설정 */
-    transform: translateX(-50%); /* 중앙 정렬 */
-    font-family: "tjr_light";
     font-size: 6px;
     line-height: 120%;
-    display: flex;
-    justify-content: center; /* 가로 방향 가운데 정렬 */
-    text-align: center; /* 가운데 정렬 */
-    color: rgba(0, 0, 0, 0.5);
   }
 
   .buttons {
@@ -223,16 +219,18 @@
   }
 
   .hide-button {
-    font-size: 80%;
+    font-size: 100%;
   }
 
   .menu-bar {
-    font-size: 100%;
-    right: -50%;
-    width: 30%;
+    font-size: 150%;
+    right: -200px;
+    width: 180px;
     height: 100%;
+    position: fixed;
+    top: 0;
+    transition: right 1s ease;
   }
-
   .menu-bar ul {
     margin: 0;
     padding: 0;
