@@ -349,10 +349,29 @@ fieldset {
   }
 
   .menu-bar {
-    font-size: 100%;
+    font-size: 150%;
     right: -50%;
     width: 30%;
     height: 100%;
+    position: fixed;
+    top: 0;
+    transition: right 1s ease;
+  }
+  .menu-bar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu-bar li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-bar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
   }
 
   .show-menu {
