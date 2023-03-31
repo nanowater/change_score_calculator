@@ -218,10 +218,11 @@ fieldset {
 }
 
 .hide-button {
+  margin-top: 5%;
   background: #011e35;
   color: #ffffff;
   font-family: "tjr_bold";
-  font-size: 60%;
+  font-size: 100%;
   outline: none;
   border: none;
   box-shadow: none;

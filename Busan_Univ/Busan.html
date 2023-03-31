@@ -50,6 +50,7 @@
         <legend class="sector_name">과 선택</legend>
         <select id="major_select" onchange="show_major()" class="major_menubar"></select>
         <input type="text" id="major_line" class="major_line" readonly />
+        <input type="hidden" id="major" />
         <input type="text" id="major_aver_score" class="aver_score" readonly />
         <table border="1" class="chart chart_style">
           <thead>
@@ -178,6 +179,7 @@
       <br />
       <input type="submit" value="점수 계산" onclick="cac()" class="cac_button" /><br /><br />
       <input type="hidden" id="major_70_score" />
+      <input type="hidden" id="add_Univ" />
     </fieldset>
 
     <div class="fieldset-wrapper">
