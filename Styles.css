@@ -28,6 +28,12 @@
   src: url("fonts/fa-regular-400.woff") format("woff");
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .fieldset-wrapper {
   display: flex;
   flex-direction: row;
@@ -98,22 +104,20 @@ fieldset {
   justify-content: center;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .title {
   font-family: "tjr_medium";
   font-size: 350%;
   color: #004d9d;
   margin-top: 1%;
-  margin-bottom: 1%;
+  display: flex; /* 플렉스 박스로 설정 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  vertical-align: middle;
 }
 
 .grade_value {
   font-family: "tjr_thin";
+  margin-left: 20%;
   font-size: 100%;
   color: #000000;
 }
@@ -121,13 +125,21 @@ fieldset {
   font-family: "tjr_thin";
   font-size: 100%;
   color: #000000;
-  width: 100%;
 }
 
 .sector_name {
   font-family: "tjr_thin";
   font-size: 100%;
   color: #000000;
+}
+
+.aver_score {
+  font-family: "tjr_thin";
+  font-size: 100%;
+  width: 20%;
+  height: 20px;
+  align-items: center;
+  text-align: center;
 }
 
 .major_menubar {
@@ -157,7 +169,7 @@ fieldset {
   font-family: "tjr_thin";
   font-size: 80%;
   color: #000000;
-  width: 70%;
+  width: 130%;
   height: 25px;
 }
 
@@ -184,41 +196,25 @@ fieldset {
   color: #ffffff;
 }
 
-.under_desc {
-  margin-top: 3%;
-  position: absolute;
-  left: 50%; /* 왼쪽 위치를 페이지의 중앙에 위치하도록 설정 */
-  transform: translateX(-50%); /* 중앙 정렬 */
-  font-family: "tjr";
-  font-size: 19px;
-  line-height: 44px;
-  display: flex;
-  justify-content: center; /* 가로 방향 가운데 정렬 */
-  width: 100%; /* 부모 요소에 꽉 차도록 너비를 100%로 설정 */
-  text-align: center; /* 가운데 정렬 */
-  color: rgba(0, 0, 0, 0.5);
-}
-
 .buttons {
   display: flex;
   gap: 10px;
 }
 
 .buttonright {
+  margin-top: -10px;
+  display: flex; /* 플렉스 박스로 설정 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  vertical-align: middle;
   height: 80px;
   width: 80px;
   font-family: "tjr_bold";
   font-size: 40px;
-  background: #f0f5f9;
-  box-shadow: -2px -2px 3px #ffffff, 2px 2px 3px;
+  background: #004d9d;
+  border: none;
   border-radius: 30px;
-  border-color: #f0f5f9;
-  outline-color: #f0f5f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #004d9d;
+  color: #ffffff;
 }
 
 .hide-button {
@@ -341,14 +337,8 @@ fieldset {
     height: 70px;
   }
 
-  .under_desc {
-    top: 115%;
-    font-size: 6px;
-    line-height: 120%;
-  }
-
   .buttonright {
-    margin-top: 5%;
+    margin-top: -10px;
     height: 40px;
     width: 40px;
     font-size: 15px;

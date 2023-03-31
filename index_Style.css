@@ -32,7 +32,7 @@
 .title {
   font-family: "tjr_medium";
   font-size: 450%;
-  color: #004d9d;
+  color: #000000;
   margin-bottom: 1%;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .updatelog {
-  font-family: "tjr_regular";
+  font-family: "tjr_medium";
   font-size: 350%;
   color: #000000;
 }
@@ -73,40 +73,23 @@
   color: #000000;
 }
 
-.under_desc {
-  margin-top: 3%;
-  position: absolute;
-  left: 50%; /* 왼쪽 위치를 페이지의 중앙에 위치하도록 설정 */
-  transform: translateX(-50%); /* 중앙 정렬 */
-  font-family: "tjr";
-  font-size: 19px;
-  line-height: 44px;
-  display: flex;
-  justify-content: center; /* 가로 방향 가운데 정렬 */
-  width: 100%; /* 부모 요소에 꽉 차도록 너비를 100%로 설정 */
-  text-align: center; /* 가운데 정렬 */
-  color: rgba(0, 0, 0, 0.5);
-}
-
 .buttons {
   display: flex;
   gap: 10px;
 }
 
 .buttonright {
+  display: flex; /* 플렉스 박스로 설정 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  vertical-align: middle;
   height: 80px;
   font-family: "tjr_bold";
   font-size: 40px;
-  background: #f0f5f9;
-  box-shadow: -2px -2px 3px #ffffff, 2px 2px 3px;
+  background: #004d9d;
+  border: none;
   border-radius: 30px;
-  border-color: #f0f5f9;
-  outline-color: #f0f5f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #004d9d;
+  color: #ffffff;
 }
 
 .hide-button {
@@ -161,9 +144,20 @@
   right: 0;
 }
 
-.blur {
-  /* 블러 처리 스타일 */
-  filter: blur(5px);
+.buttonright .button-text {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+footer {
+  color: #00000080;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+footer p {
+  margin: 0;
 }
 
 /*///////////////////////////////////////////////////////*/
@@ -173,7 +167,6 @@
   .title {
     align-items: center;
     font-size: 200%;
-    color: #000000;
   }
 
   .summary {
@@ -189,43 +182,32 @@
 
   .updatelog {
     font-size: 180%;
-    color: #000000;
   }
   .updatever {
-    font-family: "tjr_bold";
     font-size: 100%;
   }
   .updatelog_s {
-    font-family: "tjr_regular";
     font-size: 120%;
-  }
-
-  .under_desc {
-    margin-top: 3%;
-    top: 90%;
-    font-size: 6px;
-    line-height: 120%;
-  }
-
-  .buttons {
-    display: flex;
-    gap: 10px;
   }
 
   .buttonright {
     margin-top: 5%;
     height: 40px;
+    width: 40px;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .hide-button {
-    font-size: 100%;
+  .buttonright .button-text {
+    display: none;
   }
 
   .menu-bar {
     font-size: 150%;
-    right: -200px;
-    width: 180px;
+    right: -50%;
+    width: 30%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -246,12 +228,6 @@
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: #ffffff;
-  }
-
-  .menu-bar a:hover {
-    background-color: #ffffff;
-    color: #000000;
   }
 
   .show-menu {

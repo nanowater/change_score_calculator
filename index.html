@@ -17,13 +17,8 @@
     <div class="container">
       <h1 class="title">너 재수없어 란?</h1>
       <div class="buttons">
-        <button class="buttonright">
-          <p><i class="fa-solid fa-house"></i> 홈으로</p>
-        </button>
-        <button class="buttonright" id="Univ_list">
-          <p><i class="fa-solid fa-list"> </i> 학교 목록</p>
-        </button>
-
+        <button class="buttonright" id="go_home"><i class="fa-solid fa-house"></i><span class="button-text">홈으로</span></button>
+        <button class="buttonright" id="Univ_list"><i class="fa-solid fa-list"></i><span class="button-text">학교 목록</span></button>
         <div class="menu-bar">
           <ul>
             <li>
@@ -39,7 +34,7 @@
       </div>
     </div>
     <p class="summary">
-      재수를 막기 위한 환산점수 계산기!<br />
+      재수를 막기 위한 환산점수 계산기!<br /><br />
       작년의 데이터를 이용하여 대입을 도와줍니다! <br />
       작년 해당 과의 여러가지 정보들을 알 수 있습니다!
     </p>
@@ -53,12 +48,14 @@
     <p class="updatelog">업데이트 내용</p>
     <a class="updatever"> v0.1.4b<br /> </a>
     <a class="updatelog_s"> index페이지에 css가 적용되었습니다.<br />아직까지 오류가 많을 수 있습니다. </a>
-    <center class="under_desc">
-      <pre>
-본 사이트는 단순히 참고용을 목적으로 제작되었으며, 2022학년도의 입시 결과를 바탕으로 하여 다소 부정확할 수 있습니다.
-        Copyright 2023.  TEAM &lt;!DOCTYPE html&gt;.  All right reserved.</pre
-      >
-    </center>
+    <footer>
+      <p>
+        본 사이트는 단순히 참고용을 목적으로 제작되었으며, 2022학년도의 입시 결과를 바탕으로 하여 다소 부정확할 수 있습니다. <br />
+        Copyright 2023.
+        <span>TEAM &lt;!DOCTYPE html&gt;</span>
+        All rights reserved.
+      </p>
+    </footer>
 
     <script>
       load_Univ_list();

@@ -22,7 +22,6 @@ function read_csv() {
 
 //초기화
 function reset() {
-  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
   document.getElementById("kor").value = null;
   document.getElementById("math").value = null;
   document.getElementById("eng").value = null;
@@ -33,10 +32,10 @@ function reset() {
   document.getElementById("math_grade").value = null;
   document.getElementById("tam1_grade").value = null;
   document.getElementById("tam2_grade").value = null;
-  document.getElementById("change_score_res").value = null;
+  document.getElementById("change_score_res").innerHTML = null;
   document.getElementById("major_aver_score").value = null;
-  document.getElementById("major_80_score").value = null;
-  document.getElementById("answer").value = null;
+  document.getElementById("major_70_score").value = null;
+  document.getElementById("answer").innerHTML = null;
 }
 
 //과 선택
@@ -48,23 +47,25 @@ function show_major() {
       const parsedData = Papa.parse(data).data;
       const select = document.getElementById("major_select");
       const selectedIndex = select.selectedIndex;
-      document.getElementById("major").value = parsedData[selectedIndex][1];
       document.getElementById("major_line").value = parsedData[selectedIndex][0];
       document.getElementById("major_aver_score").value = parsedData[selectedIndex][6];
       document.getElementById("major_80_score").value = parsedData[selectedIndex][7];
-      document.getElementById("add_Univ").value = parsedData[selectedIndex][10];
+
+      document.getElementById("major").value = parsedData[selectedIndex][1];
+
       document.getElementById("v1").innerHTML = parsedData[selectedIndex][2];
       document.getElementById("v2").innerHTML = parsedData[selectedIndex][3];
       document.getElementById("v3").innerHTML = parsedData[selectedIndex][4];
       document.getElementById("v4").innerHTML = parsedData[selectedIndex][5];
       document.getElementById("v5").innerHTML = parsedData[selectedIndex][8];
       document.getElementById("v6").innerHTML = parsedData[selectedIndex][9];
+      document.getElementById("add_Univ").value = parsedData[selectedIndex][10];
     });
 }
 
 //점수 계산
 function cac() {
-  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
+  document.getElementById("change_score_res").innerHTML = " ";
   var v_major_line = document.getElementById("major_line").value;
   var v_major = document.getElementById("major").value;
   var v_kor = Number(document.getElementById("kor").value);
@@ -151,20 +152,14 @@ function cac() {
       alert("에러! 알수없는 계열정보");
     }
   }
+  var input_aver = document.getElementById("major_aver_score").value;
+  var input_80 = document.getElementById("major_80_score").value;
+  if (res >= input_aver) {
+    document.getElementById("answer").innerHTML = "평균이상";
+  } else if (res >= input_80) {
+    document.getElementById("answer").innerHTML = "80% 이상";
+  } else document.getElementById("answer").innerHTML = "80% 미만";
 }
 
 //결과 출력
-function show_res() {
-  var input_res = document.getElementById("change_score_res").innerHTML;
-  var input_aver = document.getElementById("major_aver_score").value;
-  var input_80 = document.getElementById("major_80_score").value;
-  if (input_res == "") {
-    alert("환산 점수를 계산해주세요!");
-  } else {
-    if (input_res >= input_aver) {
-      document.getElementById("answer").value = "평균이상";
-    } else if (input_res >= input_80) {
-      document.getElementById("answer").value = "80% 이상";
-    } else document.getElementById("answer").value = "80% 미만";
-  }
-}
+function show_res() {}

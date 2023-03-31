@@ -24,11 +24,11 @@
     <div class="container">
       <p class="title">부산대 환산점수 계산기</p>
       <div class="buttons">
-        <button class="buttonright" onclick="window.location.href='https://almini718.github.io/change_score_calculator/'">
+        <button class="buttonright" id="go_home" onclick="window.location.href='https://almini718.github.io/change_score_calculator/'">
           <p><i class="fa-solid fa-house"></i></p>
         </button>
         <button class="buttonright" id="Univ_list">
-          <p><i class="fa-solid fa-list"> </i></p>
+          <p><i class="fa-sharp fa-solid fa-list fa-lg"></i></p>
         </button>
 
         <div class="menu-bar">
@@ -50,6 +50,7 @@
         <legend class="sector_name">과 선택</legend>
         <select id="major_select" onchange="show_major()" class="major_menubar"></select>
         <input type="text" id="major_line" class="major_line" readonly />
+        <input type="text" id="major_aver_score" class="aver_score" readonly />
         <table border="1" class="chart chart_style">
           <thead>
             <tr class="chart_names charttr">
@@ -176,7 +177,6 @@
       </table>
       <br />
       <input type="submit" value="점수 계산" onclick="cac()" class="cac_button" /><br /><br />
-      <input type="hidden" id="major_aver_score" />
       <input type="hidden" id="major_70_score" />
     </fieldset>
 
@@ -209,14 +209,7 @@
         menuBar.classList.remove("show-menu");
       });
     </script>
-
-    <footer>
-      <center class="under_desc">
-        <pre>
-  본 사이트는 단순히 참고용을 목적으로 제작되었으며, 2022학년도의 입시 결과를 바탕으로 하여 다소 부정확할 수 있습니다.
-          Copyright 2023.  TEAM &lt;!DOCTYPE html&gt;.  All right reserved.</pre
-        >
-      </center>
-    </footer>
+    <br />
+    <br />
   </body>
 </html>
