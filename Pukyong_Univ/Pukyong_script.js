@@ -34,7 +34,7 @@ function reset() {
   document.getElementById("tam2_grade").value = null;
   document.getElementById("change_score_res").innerHTML = null;
   document.getElementById("major_aver_score").value = null;
-  document.getElementById("major_70_score").value = null;
+  document.getElementById("major_80_score").value = null;
   document.getElementById("answer").innerHTML = null;
 }
 
@@ -50,9 +50,7 @@ function show_major() {
       document.getElementById("major_line").value = parsedData[selectedIndex][0];
       document.getElementById("major_aver_score").value = parsedData[selectedIndex][6];
       document.getElementById("major_80_score").value = parsedData[selectedIndex][7];
-
       document.getElementById("major").value = parsedData[selectedIndex][1];
-
       document.getElementById("v1").innerHTML = parsedData[selectedIndex][2];
       document.getElementById("v2").innerHTML = parsedData[selectedIndex][3];
       document.getElementById("v3").innerHTML = parsedData[selectedIndex][4];

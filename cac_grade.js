@@ -126,7 +126,7 @@ function tam1_grade_cac() {
     else if (v_tam1 >= 36) v_tam1_grade = 7;
     else if (v_tam1 >= 33) v_tam1_grade = 8;
     else v_tam1_grade = 9;
-  } else if (v_tam1_select == "사회문화") {
+  } else if (v_tam1_select == "사회 문화") {
     if (v_tam1 >= 64) v_tam1_grade = 1;
     else if (v_tam1 >= 62) v_tam1_grade = 2;
     else if (v_tam1 >= 59) v_tam1_grade = 3;

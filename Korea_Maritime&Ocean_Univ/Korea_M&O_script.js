@@ -32,10 +32,10 @@ function reset() {
   document.getElementById("math_grade").value = null;
   document.getElementById("tam1_grade").value = null;
   document.getElementById("tam2_grade").value = null;
-  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
+  document.getElementById("change_score_res").innerHTML = null;
   document.getElementById("major_aver_score").value = null;
   document.getElementById("major_70_score").value = null;
-  document.getElementById("answer").value = null;
+  document.getElementById("answer").innerHTML = null;
 }
 
 //과 선택
@@ -60,9 +60,11 @@ function show_major() {
     });
 }
 
+/* 아래로 check필요 */
+
 //점수 계산
 function cac() {
-  document.getElementById("change_score_res").innerHTML = "환산 점수 : ";
+  document.getElementById("change_score_res").innerHTML = " ";
   var v_major_line = document.getElementById("major_line").value;
   var v_major = document.getElementById("major").value;
   var v_kor = Number(document.getElementById("kor").value);
@@ -73,6 +75,7 @@ function cac() {
   var v_tam2 = Number(document.getElementById("tam2").value);
   var v_add_Univ = document.getElementById("add_Univ").value;
   var res = 0;
+
   //선택과목관련
   const v_math_select = document.getElementById("math_select").value;
   var v_tam1_select = document.getElementById("tam1_select").value;
@@ -182,24 +185,13 @@ function cac() {
       res += ((v_tam1 + v_tam2) * 4 * 30) / 100;
       res = res.toFixed(2);
       document.getElementById("change_score_res").innerHTML += res;
-    } else {
-      alert("에러! 알수없는 계열정보");
     }
-  }
-}
-
-//결과 출력
-function show_res() {
-  var input_res = document.getElementById("change_score_res").innerHTML;
-  var input_aver = document.getElementById("major_aver_score").value;
-  var input_70 = document.getElementById("major_70_score").value;
-  if (input_res == "") {
-    alert("환산 점수를 계산해주세요!");
-  } else {
-    if (input_res >= input_aver) {
-      document.getElementById("answer").value = "평균이상";
-    } else if (input_res >= input_70) {
-      document.getElementById("answer").value = "70% 이상";
-    } else document.getElementById("answer").value = "70% 미만";
+    var input_aver = document.getElementById("major_aver_score").value;
+    var input_70 = document.getElementById("major_70_score").value;
+    if (res >= input_aver) {
+      document.getElementById("answer").innerHTML = "평균이상";
+    } else if (res >= input_70) {
+      document.getElementById("answer").innerHTML = "70% 이상";
+    } else document.getElementById("answer").innerHTML = "70% 미만";
   }
 }
