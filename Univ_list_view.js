@@ -2,7 +2,7 @@
 
 function load_Univ_list() {
   const arr = [
-    ["부산대", "/Busan_Univ/Busan.html"],
+    ["부산대", "https://almini718.github.io/change_score_calculator/Busan_Univ/Busan.html"],
     ["부경대", "https://almini718.github.io/change_score_calculator/Pukyong_Univ/Pukyong.html"],
     ["한국해양대", "https://almini718.github.io/change_score_calculator/Korea_Maritime&Ocean_Univ/Korea_M&O.html"],
   ];
