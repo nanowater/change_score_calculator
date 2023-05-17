@@ -1,3 +1,5 @@
+//자료부족으로 70%컷 없음 (js에서만 삭제함)
+
 function read_csv() {
   fetch("Korea_M&O_csv.csv")
     .then((response) => response.text())
@@ -34,7 +36,6 @@ function reset() {
   document.getElementById("tam2_grade").value = null;
   document.getElementById("change_score_res").innerHTML = null;
   document.getElementById("major_aver_score").value = null;
-  document.getElementById("major_70_score").value = null;
   document.getElementById("answer").innerHTML = null;
 }
 
@@ -50,7 +51,6 @@ function show_major() {
       document.getElementById("major").value = parsedData[selectedIndex][1];
       document.getElementById("major_line").value = parsedData[selectedIndex][0];
       document.getElementById("major_aver_score").value = parsedData[selectedIndex][6];
-      document.getElementById("major_70_score").value = parsedData[selectedIndex][7];
       document.getElementById("add_Univ").value = parsedData[selectedIndex][9];
       document.getElementById("v1").innerHTML = parsedData[selectedIndex][2];
       document.getElementById("v2").innerHTML = parsedData[selectedIndex][3];
@@ -187,11 +187,8 @@ function cac() {
       document.getElementById("change_score_res").innerHTML += res;
     }
     var input_aver = document.getElementById("major_aver_score").value;
-    var input_70 = document.getElementById("major_70_score").value;
     if (res >= input_aver) {
       document.getElementById("answer").innerHTML = "평균이상";
-    } else if (res >= input_70) {
-      document.getElementById("answer").innerHTML = "70% 이상";
-    } else document.getElementById("answer").innerHTML = "70% 미만";
+    } else document.getElementById("answer").innerHTML = "평균 미만";
   }
 }
