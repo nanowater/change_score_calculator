@@ -82,6 +82,9 @@ function cac() {
       res += v_tam2 * 1.5;
       res = res.toFixed(2);
       document.getElementById("change_score_res").innerHTML = res;
+    } else if (v_major == "예술계") {
+      alert("현재 예술계는 계산을 지원하지않습니다.");
+      return;
     } else {
       alert("에러! 알수없는 계열정보");
       return;
