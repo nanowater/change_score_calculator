@@ -1,4 +1,5 @@
 # 너 재수없어!
+
 > 재수를 막기 위한 환산점수 계산기!
 
 작년의 데이터를 이용하여 대학을 안전하게 갈 수 있도록 도와주는 역할을 합니다!
@@ -13,13 +14,14 @@
 4. 결과 확인
 
 ## 업데이트 내용
-**v0.1.6hf2 - 2023.6.9**
 
-- 한국해양대 자료 최신화
-- 핫픽스 : 부산대 수능 전형 출력 오류 수정
-- 핫픽스2 : 부산대 수능 계열 출력 오류 및 계산 오류 수정
+**v0.1.7 - 2023.6.22**
+
+- 여러가지 오류를 수정하였습니다.
+- 자세한 수정내역은 Notion을 참고해주세요.
 
 ## 업데이트 기록
+
 아래의 Notion링크를 참고해주세요 <br>
 https://nanowater.notion.site/0dbfa17c1a8f4df78ffce82abd003479
 
@@ -29,4 +31,3 @@ email : nanowater718@gmail.com <br>
 Notion : https://nanowater.notion.site/project-1c6101d7bd5946f1a35ebbf3eb7aa52c
 
 <!-- Markdown link & img dfn's -->
-
